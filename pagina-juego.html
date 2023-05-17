@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pasapalabra</title>
+</head>
+<body>
+    <h1>PASAPALABRA</h1>
+    <img src="rosco.png" alt="rosco">
+    <div class="timer-container">
+        <p>Tiempo restante:</p>
+        <span id="js--timer" class="timer">300</span>
+	<a id="js--new-game" class="btn"><i class="icon-play"></i>Jugar</a>
+    <div id="js--question-controls" class="question-controls hidden">
+        <span id="js--hint" class="hint"></span>
+        <p id="js--definition" class="definition"></p>
+
+        <input id="js--user-answer" type="text" placeholder="Introduce tu respuesta">
+
+        <a id="js--send" class="btn btn--green" href="#">Enviar</a>
+        <a id="js--pasapalabra" class="btn" href="#">Pasapalabra</a>
+    </div>
+    <div id="js--pa-controls" class="pa-controls hidden">
+        <p id="js--end-title" class="title"></p>
+        <p id="js--end-subtitle" class="subtitle"></p>
+        <a id="js--pa" class="btn" href=""><i class="icon-loop"></i>Jugar de nuevo</a>
+    </div>
+</div>
+</section>
+<footer>
+    <p>© 2023 Susana Nieto</p>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
