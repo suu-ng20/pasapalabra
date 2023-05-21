@@ -27,14 +27,6 @@ var words = [
 ];
 
 
-function Word(idNumber, letter, hint, definition, word, correct) {
-	this.idNumber = idNumber;
-	this.letter = letter;
-	this.hint = hint;
-	this.definition = definition;
-	this.word = word;
-	this.correct = null;
-}
 
 //Mostrar la pregunta y la pista 
 function showDefinition(pos) {
@@ -42,12 +34,7 @@ function showDefinition(pos) {
 	$("#js--definition").html(words[pos].definition);
 }
 
-//La palabra se guarda al final de la lista para luego volver a aparecer
-function pasapalabra(pos) {
-	var w = words.splice(pos, 1)[0];
-	words.push(w);
 
-}
 // Función para comprobar la respuesta
 function checkAnswer(pos) {
 	var userAnswer = $("#js--user-answer").val().toLowerCase();
@@ -65,7 +52,12 @@ function checkAnswer(pos) {
   
 	return count++;
   }
-  
+  //La palabra se guarda al final de la lista para luego volver a aparecer
+function pasapalabra(pos) {
+	var w = words.splice(pos, 1)[0];
+	words.push(w);
+
+}
   // Continuar jugando después de comprobar la respuesta
   function continuePlaying() {
 	if (count != 25) {
@@ -93,7 +85,14 @@ function countdown() {
 	temp = $("#js--timer");
 	temp.html(seconds);
 	timeoutMyOswego = setTimeout(countdown, 1000);
+	
 }
+
+// Verificar la respuesta y continuar el juego 
+$("#js--send").click(function() {
+	checkAnswer(count);
+	continuePlaying();
+});
 //Función para el fin del juego 
 function endGame() {
 	$("#js--question-controls").addClass("hidden");
@@ -114,7 +113,14 @@ function showUserScore() {
 	return "Has conseguido un total de " + counter + " aciertos.";
 }
 
-
+function Word(idNumber, letter, hint, definition, word, correct) {
+	this.idNumber = idNumber;
+	this.letter = letter;
+	this.hint = hint;
+	this.definition = definition;
+	this.word = word;
+	this.correct = null;
+}
 // Juego reiniciado 
 var count = 0;
 $("#js--new-game").click(function() {
@@ -125,11 +131,7 @@ $("#js--new-game").click(function() {
 	countdown();
 });
 
-// Verificar la respuesta y continuar el juego 
-$("#js--send").click(function() {
-	checkAnswer(count);
-	continuePlaying();
-});
+
 
 // Uso de la letra enter
 $("#js--question-controls").keypress(function(event) {
@@ -146,7 +148,7 @@ $("#js--pasapalabra").click(function() {
 	continuePlaying();
 });
 
-// Recargar la página para un código nuevo 
+// Recargar la página 
 $("#js--pa").click(function() {
 	location.reload()
 });
